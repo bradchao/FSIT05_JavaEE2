@@ -6,6 +6,6 @@
   </context-param>
   <context-param>
     <param-name>temp-dir</param-name>
-    <param-value>D:\brad\ws_javaee\JavaEE\WebContent\temp</param-value>
+    <param-value>C:\Users\Administrator\git\repository3\JavaEE\WebContent\temp</param-value>
   </context-param>
 </web-app>

@@ -27,7 +27,19 @@ public class Brad17 extends HttpServlet {
 		int result = model.add();
 		
 		// 2. view
-		RequestDispatcher rd = request.getRequestDispatcher("Brad19?x=" + x + "&y=" + y + "&result=" + result);
+//		RequestDispatcher rd = request.getRequestDispatcher("Brad19?x=" + x + "&y=" + y + "&result=" + result);
+		
+//		RequestDispatcher rd = request.getRequestDispatcher("Brad19");
+//		request.setAttribute("x", x);
+//		request.setAttribute("y", y);
+//		request.setAttribute("result", result+"");
+		
+		RequestDispatcher rd = request.getRequestDispatcher("brad55.jsp");
+		request.setAttribute("x", x);
+		request.setAttribute("y", y);
+		request.setAttribute("result", result+"");
+		
+		
 		rd.forward(request, response);
 		
 	}
