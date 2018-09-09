@@ -1,0 +1,19 @@
+<%@page import="tw.brad.javaee.Member"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<%
+	Member member = new Member("Brad", "brad", 53);
+	application.setAttribute("member", member);
+
+%>
+
+
+</body>
+</html>
