@@ -16,21 +16,13 @@
 </head>
 <body>
 <%
-	final String username = "brad@brad.tw";
-	final String passwd = "fw740893";
-	
 	Properties props = new Properties();
-	props.put("mail.smtp.auth", "true");
-	props.put("mail.smtp.host", "smtp.gmail.com");
-	props.put("mail.smtp.post", "587");
-	props.put("mail.smtp.starttls.enable", "true");
+//	props.put("mail.smtp.auth", "true");
+	props.put("mail.smtp.host", "ms7.hinet.net");
+//	props.put("mail.smtp.post", "587");
+//	props.put("mail.smtp.starttls.enable", "true");
 	
-	Session session2 = Session.getInstance(props, 
-			new Authenticator(){
-		protected PasswordAuthentication getPasswordAuthentication(){
-			return new PasswordAuthentication(username, passwd);
-		}
-	});
+	Session session2 = Session.getInstance(props);
 	
 	try{
 		Message message = new MimeMessage(session2);
