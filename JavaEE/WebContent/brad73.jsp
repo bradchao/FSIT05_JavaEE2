@@ -54,16 +54,6 @@
 			<td>${row.pos }</td>
 		</tr>
 		
-		<!--  
-		<sql:update>
-			insert into travel (sid,name,tel,addr,pos) values (?,?,?,?,?)
-			<sql:param>${row.ID }</sql:param>
-			<sql:param>${row.Name }</sql:param>
-			<sql:param>${row.Tel }</sql:param>
-			<sql:param>${row.Address }</sql:param>
-			<sql:param>${row.pos }</sql:param>
-		</sql:update>
-		-->
 	</c:forEach>
 </table>
 

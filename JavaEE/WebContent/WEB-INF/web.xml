@@ -2,7 +2,7 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
   <context-param>
     <param-name>upload-dir</param-name>
-    <param-value>D:\brad\ws_javaee\JavaEE\WebContent\upload</param-value>
+    <param-value>C:\Users\Administrator\git\repository3\JavaEE\WebContent\upload</param-value>
   </context-param>
   <context-param>
     <param-name>temp-dir</param-name>
