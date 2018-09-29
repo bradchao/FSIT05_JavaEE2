@@ -56,7 +56,8 @@ public class Brad44 extends HttpServlet {
 
 		System.out.println("add a task");
 		
-		executorService.execute(new AsyncRequest(async));
+//		executorService.execute(new AsyncRequest(async));
+		executorService.submit(new AsyncRequest(async));
 		
 		
 	}
