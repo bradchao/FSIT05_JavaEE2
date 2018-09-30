@@ -1,0 +1,22 @@
+<books>
+	<book>
+		<title>Book1</title>
+		<authors>
+			<name>Brad</name>
+			<name>Tony</name>
+		</authors>
+		<price>100</price>
+	</book>
+
+	<book>
+		<title>Book2</title>
+		<authors>
+			<name>Amy</name>
+			<name>Peter</name>
+			<name>Kevin</name>
+		</authors>
+		<price>200</price>
+	</book>
+
+
+</books>

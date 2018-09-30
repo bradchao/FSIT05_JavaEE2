@@ -1,0 +1,89 @@
+<script>
+var xmlhttp;
+if (window.XMLHttpRequest) {
+    xmlhttp = new XMLHttpRequest();
+ } else {
+    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+}
+
+function test1() {
+	xmlhttp.open('GET', 'books.xml', true);
+	xmlhttp.onreadystatechange = function(){
+		var state = xmlhttp.readyState;
+		var status = xmlhttp.status;
+		var table = document.getElementById('table');
+		
+		if (state == 4 && status == 200){
+			var xml = xmlhttp.responseXML;
+			var books = xml.getElementsByTagName('book');
+			
+			for (var i=0; i<books.length; i++){
+				var book = books[i];
+				var titleObj = book.getElementsByTagName('title');
+				var priceObj = book.getElementsByTagName('price');
+				var authorsObj = book.getElementsByTagName('authors');
+				
+				var title = titleObj[0].innerHTML;
+				var price = priceObj[0].innerHTML;
+				var author = authorsObj[0];
+				var names = author.getElementsByTagName('name');
+				for (var j=0; j<names.length; j++){
+					var name = names[j].innerHTML;
+					
+					var tr = table.insertRow(-1);
+					if (j == 0){
+						var tdTitle = tr.insertCell(0);
+						tdTitle.rowSpan = names.length
+						tdTitle.innerHTML = title
+						
+						var tdName = tr.insertCell(1);
+						tdName.innerHTML = name
+
+						var tdPrice = tr.insertCell(2);
+						tdPrice.rowSpan = names.length
+						tdPrice.innerHTML = price
+					
+					}else{
+						var tdName = tr.insertCell(0);
+						tdName.innerHTML = name
+					}
+				}
+			}
+		}
+	};
+	xmlhttp.send();
+}
+
+</script>
+<button onclick="test1()">Test1</button>
+<hr>
+<table border='1' width='100%' id='table'>
+	<tr>
+		<th>書名</th>
+		<th>作者</th>
+		<th>售價</th>
+	</tr>
+	<tr>
+		<td rowspan='2'>data1</td>
+		<td>brad1</td>
+		<td rowspan='2'>data3</td>
+	</tr>
+	<tr>
+		<td>brad2</td>
+	</tr>
+	<tr>
+		<td rowspan='3'>book2</td>
+		<td>brad1</td>
+		<td rowspan='3'>199</td>
+	</tr>
+	<tr>
+		<td>brad2</td>
+	</tr>
+	<tr>
+		<td>brad3</td>
+	</tr>
+
+
+
+
+</table>
