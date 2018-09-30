@@ -1,0 +1,66 @@
+<script>
+	var xmlhttp;
+	var isOK = false;
+	if (window.XMLHttpRequest) {
+	    xmlhttp = new XMLHttpRequest();
+	 } else {
+	    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+
+	
+	function checkAccount(){
+		var mesg = document.getElementById('mesg');
+		var account = document.getElementById('name').value;
+		xmlhttp.open('GET', 'ajax12.jsp?account=' + account, true);
+		xmlhttp.onreadystatechange = function(){
+			var state = xmlhttp.readyState;
+			var status = xmlhttp.status;
+			if (state == 4 && status == 200){
+				var data = xmlhttp.responseText;
+				var data2 = myTrim(data);
+				console.log(data2 + ":" + data2.length);
+				if (data2 == '0'){
+					isOK = true;
+					mesg.innerHTML = 'OK';
+				}else{
+					mesg.innerHTML = 'XX';
+				}
+			}
+		};
+		xmlhttp.send();
+		console.log("debug2:" + isOK);
+	}
+	
+	function myTrim(x) {
+	    return x.replace(/^\s+|\s+$/gm,'');
+	}
+	
+	function submitForm(){
+		var myform = document.getElementById('myform');
+		var mesg = document.getElementById('mesg');
+		var account = document.getElementById('name').value;
+		xmlhttp.open('GET', 'ajax12.jsp?account=' + account, true);
+		xmlhttp.onreadystatechange = function(){
+			var state = xmlhttp.readyState;
+			var status = xmlhttp.status;
+			if (state == 4 && status == 200){
+				var data = xmlhttp.responseText;
+				var data2 = myTrim(data);
+				console.log(data2 + ":" + data2.length);
+				if (data2 == '0'){
+					myform.submit();		
+				}
+			}
+		};
+		xmlhttp.send();
+		
+		return false;
+	}
+	
+</script>
+
+<form action="ajax13.jsp" onsubmit="return submitForm();" id='myform'>
+	<input type='text' name='account' id='name' onblur="checkAccount()" /><span id='mesg'></span><br>
+	<input type='password' name='passwd' id='passwd' /><br>
+	<input type='submit' value='Register' />
+</form>

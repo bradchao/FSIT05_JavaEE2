@@ -54,8 +54,24 @@ function test1() {
 	xmlhttp.send();
 }
 
+function test2(){
+	xmlhttp.open('GET', 'ajax10.jsp', true);
+	xmlhttp.onreadystatechange = function(){
+		var state = xmlhttp.readyState;
+		var status = xmlhttp.status;
+		var table = document.getElementById('table');
+		
+		if (state == 4 && status == 200){
+			var data = xmlhttp.responseText;
+			table.innerHTML = data; 
+		}
+	};
+	xmlhttp.send();
+	
+}
+
 </script>
-<button onclick="test1()">Test1</button>
+<button onclick="test2()">Test1</button>
 <hr>
 <table border='1' width='100%' id='table'>
 	<tr>
