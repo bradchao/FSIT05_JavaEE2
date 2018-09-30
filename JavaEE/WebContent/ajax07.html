@@ -1,0 +1,91 @@
+<script>
+var xmlhttp;
+if (window.XMLHttpRequest) {
+    xmlhttp = new XMLHttpRequest();
+ } else {
+    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+}
+
+function test1(){
+	var table = document.getElementById('table');
+	/*
+	for (var v in table){
+		console.log(v + ":" + table[v]);
+	}
+	*/
+	var tc = table.children;
+	for (var vv in tc){
+		console.log(vv + ":" + tc[vv]);
+		for (var vvv in vv){
+			console.log(vvv + ":" + vv[vvv]);
+		}
+	}
+}
+
+function addRow(){
+	var count = document.getElementById('count');
+	var table = document.getElementById('table');
+	
+	
+	var tr = table.insertRow(-1);
+	var td0 = tr.insertCell(0);
+	var td1 = tr.insertCell(1);
+	var td2 = tr.insertCell(2);
+	
+	td0.innerHTML = "Brad1";
+	td1.innerHTML = "Brad2";
+	td2.innerHTML = "Brad3";
+	
+	count.innerHTML = table.rows.length;
+}
+
+function addRowV2(){
+	xmlhttp.open('GET', 'ajax08.jsp', true);
+	xmlhttp.onreadystatechange = function(){
+		var state = xmlhttp.readyState;
+		var status = xmlhttp.status;
+		var count = document.getElementById('count');
+		var table = document.getElementById('table');
+		
+		if (state == 4 && status == 200){
+			var response = xmlhttp.responseText.trim();
+			var data = response.split(",");
+			
+			var tr = table.insertRow(-1);
+			var td0 = tr.insertCell(0);
+			var td1 = tr.insertCell(1);
+			var td2 = tr.insertCell(2);
+			
+			td0.innerHTML = data[0];
+			td1.innerHTML = data[1];
+			td2.innerHTML = data[2];
+		}		
+		
+		
+		
+		
+		count.innerHTML = table.rows.length;
+	};
+	xmlhttp.send();
+}
+
+
+
+
+</script>
+<button onclick="test1()">Test1</button>
+<button onclick="addRowV2()">Add a Row</button>
+<hr>
+<div id='count'></div>
+<table border='1' width='100%' id='table'>
+	<tr>
+		<th>Field1</th>
+		<th>Field2</th>
+		<th>Field3</th>
+	</tr>
+	<tr>
+		<td>data1</td>
+		<td>data2</td>
+		<td>data3</td>
+	</tr>
+</table>
