@@ -1,0 +1,35 @@
+<script>
+var xmlhttp;
+if (window.XMLHttpRequest) {
+    // code for modern browsers
+    xmlhttp = new XMLHttpRequest();
+ } else {
+    // code for old IE browsers
+    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+}
+function cal(){
+	var x = document.getElementById('x').value;
+	var y = document.getElementById('y').value;
+
+	var url = "ajax04.jsp?x=" + x + "&y=" + y;
+	xmlhttp.open("GET", url, true);
+	xmlhttp.onreadystatechange = function(){
+		var state = xmlhttp.readyState;
+		var status = xmlhttp.status;
+		if (state == 4 && status == 200){
+			document.getElementById('result').innerHTML =
+				xmlhttp.responseText;
+		}
+	};
+	xmlhttp.send();
+	
+}
+
+
+</script>
+<input type="text" id="x" />
++
+<input type="text" id="y" />
+<input type='button' onclick="cal()" value="=" />
+<span id='result'></span>
+
